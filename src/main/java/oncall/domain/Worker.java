@@ -7,7 +7,7 @@ public class Worker {
     private static final int MAXIMUM_NAME_SIZE = 5;
     private final String name;
 
-    Worker(String name) {
+    public Worker(String name) {
         validate(name);
         this.name = name;
     }
