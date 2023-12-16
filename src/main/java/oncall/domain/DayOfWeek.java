@@ -24,4 +24,12 @@ public class DayOfWeek {
             dayOfWeek = "월";
         }
     }
+
+    public boolean isWeekend() {
+        return dayOfWeek.equals("일") || dayOfWeek.equals("토");
+    }
+
+    public boolean isWeekday() {
+        return !isWeekend();
+    }
 }
