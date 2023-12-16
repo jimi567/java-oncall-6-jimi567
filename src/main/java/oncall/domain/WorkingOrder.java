@@ -10,9 +10,12 @@ public class WorkingOrder {
     private static final int MAXIMUM_WORKER_SIZE = 35;
     private final List<Worker> workingOrder;
 
+    private int current;
+
     public WorkingOrder(List<Worker> workingOrder) {
         validate(workingOrder);
         this.workingOrder = workingOrder;
+        current = 0;
     }
 
     private void validate(List<Worker> workingOrder) {
@@ -31,5 +34,12 @@ public class WorkingOrder {
         return workingOrder.stream().distinct().toList().size() != workingOrder.size();
     }
 
-    
+    public Worker getNextWorker() {
+        return workingOrder.get(current);
+    }
+
+    public void updateNextWorker() {
+        current++;
+    }
+
 }

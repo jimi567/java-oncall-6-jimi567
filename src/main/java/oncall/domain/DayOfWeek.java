@@ -32,4 +32,9 @@ public class DayOfWeek {
     public boolean isWeekday() {
         return !isWeekend();
     }
+
+    @Override
+    public String toString() {
+        return dayOfWeek;
+    }
 }

@@ -44,4 +44,9 @@ public class Date {
         Date otherDate = (Date) obj;
         return month == otherDate.month && date == otherDate.date;
     }
+
+    @Override
+    public String toString() {
+        return month + "월" + " " + date + "일";
+    }
 }

@@ -27,4 +27,9 @@ public class Worker {
         return this.name.equals(name);
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
 }
