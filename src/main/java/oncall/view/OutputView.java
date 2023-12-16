@@ -1,5 +1,7 @@
 package oncall.view;
 
+import java.util.List;
+
 public class OutputView {
 
     private static final OutputView INSTANCE = new OutputView();
@@ -23,5 +25,7 @@ public class OutputView {
         System.out.print("휴일 비상 근무 순번대로 사원 닉네임을 입력하세요> ");
     }
 
-    //결과 출력
+    public void printResult(List<String> schedule) {
+        System.out.println(String.join("\n", schedule));
+    }
 }
