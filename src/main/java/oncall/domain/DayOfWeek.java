@@ -3,7 +3,7 @@ package oncall.domain;
 public class DayOfWeek {
     private String dayOfWeek;
 
-    DayOfWeek(String dayOfWeek) {
+    public DayOfWeek(String dayOfWeek) {
         this.dayOfWeek = dayOfWeek;
     }
 
