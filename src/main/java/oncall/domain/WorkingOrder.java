@@ -3,6 +3,7 @@ package oncall.domain;
 import static oncall.consts.Error.INVALID_MESSAGE;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WorkingOrder {
 
@@ -31,7 +32,7 @@ public class WorkingOrder {
     }
 
     private boolean hasDuplication(List<Worker> workingOrder) {
-        return workingOrder.stream().distinct().toList().size() != workingOrder.size();
+        return workingOrder.stream().collect(Collectors.toSet()).size() != workingOrder.size();
     }
 
     public Worker getNextWorker() {
@@ -40,6 +41,9 @@ public class WorkingOrder {
 
     public void updateNextWorker() {
         current++;
+        if (current >= workingOrder.size()) {
+            current = 0;
+        }
     }
 
 }
