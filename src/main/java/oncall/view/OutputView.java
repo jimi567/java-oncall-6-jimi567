@@ -26,10 +26,12 @@ public class OutputView {
     }
 
     public void printResult(List<String> schedule) {
-        System.out.println(String.join("\n", schedule));
+        System.out.println();
+        System.out.println(String.join(System.lineSeparator(), schedule));
     }
 
     public void printErrorMessage(String message) {
+        System.out.println();
         System.out.println(message);
     }
 }
