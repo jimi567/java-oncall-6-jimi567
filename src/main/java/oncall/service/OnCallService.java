@@ -15,6 +15,7 @@ public class OnCallService {
     private final WorkingOrder weekendOrder;
 
     List<Worker> order = new ArrayList<>();
+    List<String> schedule = new ArrayList<>();
 
     public OnCallService(Date date, DayOfWeek dayOfWeek, WorkingOrder weekdayOrder, WorkingOrder weekendOrder) {
         this.date = date;
@@ -24,33 +25,42 @@ public class OnCallService {
     }
 
     public List<String> getSchedule() {
-        List<String> schedule = new ArrayList<>();
         do {
             if (dayOfWeek.isWeekday() && date.isHoliday()) {
-                if (sameWorkerPrevious(weekendOrder.getNextWorker())) {
-                    weekendOrder.updateNextWorker();
-                }
-                order.add(weekendOrder.getNextWorker());
-                schedule.add(date.toString() + " " + dayOfWeek.toString() + "(휴일) " + weekendOrder.getNextWorker()
-                        .toString());
-            } else if (dayOfWeek.isWeekday() && !date.isHoliday()) {
-                if (sameWorkerPrevious(weekdayOrder.getNextWorker())) {
-                    weekdayOrder.updateNextWorker();
-                }
-                order.add(weekdayOrder.getNextWorker());
-                schedule.add(
-                        date.toString() + " " + dayOfWeek.toString() + " " + weekdayOrder.getNextWorker().toString());
+                addScheduleHoliday();
+            } else if (dayOfWeek.isWeekday()) {
+                addScheduleWeekday();
             } else if (dayOfWeek.isWeekend()) {
-                if (sameWorkerPrevious(weekendOrder.getNextWorker())) {
-                    weekendOrder.updateNextWorker();
-                }
-                order.add(weekendOrder.getNextWorker());
-                schedule.add(
-                        date.toString() + " " + dayOfWeek.toString() + " " + weekendOrder.getNextWorker().toString());
+                addScheduleWeekend();
             }
             dayOfWeek.updateNextDay();
         } while (date.updateDay());
         return schedule;
+    }
+
+    private void addScheduleHoliday() {
+        if (sameWorkerPrevious(weekendOrder.getNextWorker())) {
+            weekendOrder.updateNextWorker();
+        }
+        order.add(weekendOrder.getNextWorker());
+        schedule.add(date + " " + dayOfWeek + "(휴일) " + weekendOrder.getNextWorker());
+    }
+
+    private void addScheduleWeekday() {
+        if (sameWorkerPrevious(weekdayOrder.getNextWorker())) {
+            weekdayOrder.updateNextWorker();
+        }
+        order.add(weekdayOrder.getNextWorker());
+        schedule.add(
+                date + " " + dayOfWeek + " " + weekdayOrder.getNextWorker());
+    }
+
+    private void addScheduleWeekend() {
+        if (sameWorkerPrevious(weekendOrder.getNextWorker())) {
+            weekendOrder.updateNextWorker();
+        }
+        order.add(weekendOrder.getNextWorker());
+        schedule.add(date + " " + dayOfWeek + " " + weekendOrder.getNextWorker());
     }
 
     private boolean sameWorkerPrevious(Worker worker) {
