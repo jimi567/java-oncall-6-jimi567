@@ -44,6 +44,7 @@ public class OnCallService {
         }
         order.add(weekendOrder.getNextWorker());
         schedule.add(date + " " + dayOfWeek + "(휴일) " + weekendOrder.getNextWorker());
+        weekendOrder.updateNextWorker();
     }
 
     private void addScheduleWeekday() {
@@ -53,6 +54,7 @@ public class OnCallService {
         order.add(weekdayOrder.getNextWorker());
         schedule.add(
                 date + " " + dayOfWeek + " " + weekdayOrder.getNextWorker());
+        weekdayOrder.updateNextWorker();
     }
 
     private void addScheduleWeekend() {
@@ -61,6 +63,7 @@ public class OnCallService {
         }
         order.add(weekendOrder.getNextWorker());
         schedule.add(date + " " + dayOfWeek + " " + weekendOrder.getNextWorker());
+        weekendOrder.updateNextWorker();
     }
 
     private boolean sameWorkerPrevious(Worker worker) {
