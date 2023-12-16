@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-    private static final InputView INSTANCE = new OutputView();
+    private static final InputView INSTANCE = new InputView();
     private final OutputView outputView = OutputView.getInstance();
 
     private InputView() {

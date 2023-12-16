@@ -2,7 +2,7 @@ package oncall.consts;
 
 public enum Error {
 
-    INVALID_MESSAGE("유효하지 않은 입력 값입니다. 다시 입력해 주세요."),
+    INVALID_MESSAGE("유효하지 않은 입력 값입니다. 다시 입력해 주세요.");
 
     private final String ERROR = "[ERROR] ";
     private final String message;
@@ -15,7 +15,7 @@ public enum Error {
         return ERROR + message;
     }
 
-    public void throwException(){
+    public void throwException() {
         throw new IllegalArgumentException(getMessage());
     }
 }
