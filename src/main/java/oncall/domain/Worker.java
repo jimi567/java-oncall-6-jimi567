@@ -5,6 +5,7 @@ import static oncall.consts.Error.INVALID_MESSAGE;
 public class Worker {
 
     private static final int MAXIMUM_NAME_SIZE = 5;
+    private static final int MINIMUM_NAME_SIZE = 1;
     private final String name;
 
     public Worker(String name) {
@@ -19,7 +20,7 @@ public class Worker {
     }
 
     private boolean validateSize(String name) {
-        return name.length() <= MAXIMUM_NAME_SIZE;
+        return name.length() <= MAXIMUM_NAME_SIZE && name.length() >= MINIMUM_NAME_SIZE;
     }
 
     @Override

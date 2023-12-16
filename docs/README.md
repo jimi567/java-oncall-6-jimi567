@@ -8,6 +8,7 @@
 
 - [x] 유효성을 검증한다.
     - [x] 최대 5자
+    - [x] 최소 1자
 - [x] equals 오버라이딩
 
 2. WorkingOrder
