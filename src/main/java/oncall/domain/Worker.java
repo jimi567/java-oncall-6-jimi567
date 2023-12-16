@@ -23,9 +23,20 @@ public class Worker {
         return name.length() <= MAXIMUM_NAME_SIZE && name.length() >= MINIMUM_NAME_SIZE;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
-    public boolean equals(Object name) {
-        return this.name.equals(name);
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Worker otherWorker = (Worker) obj;
+        return this.name.equals(otherWorker.getName());
     }
 
     @Override

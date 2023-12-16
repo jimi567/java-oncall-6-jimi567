@@ -41,7 +41,7 @@ public class WorkingOrder {
 
     public void updateNextWorker() {
         current++;
-        if (current >= workingOrder.size()) {
+        if (current == workingOrder.size()) {
             current = 0;
         }
     }

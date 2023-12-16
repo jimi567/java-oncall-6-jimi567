@@ -67,10 +67,14 @@ public class OnCallService {
     }
 
     private boolean sameWorkerPrevious(Worker worker) {
-        return getLastWorker(order) == worker;
+        Worker lastWorker = getLastWorker();
+        if (lastWorker == null) {
+            return false;
+        }
+        return getLastWorker().equals(worker);
     }
 
-    public Worker getLastWorker(List<Worker> order) {
+    public Worker getLastWorker() {
         if (order.size() == 0) {
             return null;
         }

@@ -56,7 +56,7 @@ public class Date {
             return false;
         }
         Date otherDate = (Date) obj;
-        return month == otherDate.month && date == otherDate.date;
+        return month == otherDate.getMonth() && date == otherDate.getDate();
     }
 
     @Override
